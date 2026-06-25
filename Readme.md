@@ -159,6 +159,25 @@ Students are encouraged to:
 
 ***
 
+## Contribution Policy (Current Stage)
+
+This repository is provided for **learning and reference purposes only**.
+
+At this stage of the course:
+
+- Students should NOT submit Pull Requests
+- Do NOT attempt to modify the original repository
+- Work should be done in your own copy of the project
+
+### Student Instructions
+
+1. Clone or download this repository
+2. Create your own repository
+3. Practice and modify code independently
+
+Future assignments may introduce collaboration and Pull Requests.
+***
+
 ## ⚠️ Disclaimer
 
 This project may use metadata related to malware samples for educational purposes only.

@@ -66,6 +66,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Excercise.md" />
+    <None Include="LearningNotes.md" />
     <None Include="malware_500.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -79,6 +81,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Readme.md" />
+    <None Include="StudentGuide.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
