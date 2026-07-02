@@ -63,6 +63,28 @@ namespace FileProcessing
             cb_FileType.Items.Add("hta");
 
             cb_FileType.SelectedIndex = 0;
+
+            cb_FileTypetxt.Items.Clear();
+
+            // Combobox for filtering by file type
+            cb_FileTypetxt.Items.Add("All");
+            cb_FileTypetxt.Items.Add("exe");
+            cb_FileTypetxt.Items.Add("dll");
+            cb_FileTypetxt.Items.Add("elf");
+            cb_FileTypetxt.Items.Add("sh");
+            cb_FileTypetxt.Items.Add("lnk");
+            cb_FileTypetxt.Items.Add("vbe");
+            cb_FileTypetxt.Items.Add("xlsx");
+            cb_FileTypetxt.Items.Add("tar");
+            cb_FileTypetxt.Items.Add("rar");
+            cb_FileTypetxt.Items.Add("msi");
+            cb_FileTypetxt.Items.Add("bat");
+            cb_FileTypetxt.Items.Add("js");
+            cb_FileTypetxt.Items.Add("zip");
+            cb_FileTypetxt.Items.Add("dll");
+            cb_FileTypetxt.Items.Add("hta");
+
+            cb_FileTypetxt.SelectedIndex = 0;
         }
 		/// <summary>
 		/// Handles the Click event of the Read button by loading the contents of the specified file into the display area.
@@ -177,6 +199,7 @@ namespace FileProcessing
             string filterType = cb_FileType.SelectedItem?.ToString()?.Trim() ?? "";
             bool applyFilter = !string.IsNullOrEmpty(filterType) && !filterType.Equals("All", StringComparison.OrdinalIgnoreCase);
 
+            dgvData.Columns.Clear();
             dgvData.Rows.Clear(); // Remove existing rows before loading new data
 
             try
@@ -243,6 +266,76 @@ namespace FileProcessing
         private void btn_search_Click(object sender, EventArgs e)
         {
             LoadFilteredMalwareData();
+        }
+        private void LoadFilteredTextData()
+        {
+            if (string.IsNullOrWhiteSpace(tbFileName.Text) || !File.Exists(tbFileName.Text))
+            {
+                MessageBox.Show("Please choose .csv file!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(tb_mtxt.Text, out int m) || !int.TryParse(tb_ntxt.Text, out int n))
+            {
+                MessageBox.Show("Please enter startLine and stopLine with Integer!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (n < m)
+            {
+                MessageBox.Show("stopLine must be greater than startLine!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string filterType = cb_FileTypetxt.SelectedItem?.ToString()?.Trim() ?? "";
+            bool applyFilter = !string.IsNullOrEmpty(filterType) && !filterType.Equals("All", StringComparison.OrdinalIgnoreCase);
+
+            rtbShow.Clear();
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+            try
+            {
+                using (StreamReader sr = new StreamReader(tbFileName.Text))
+                {
+                    string line;
+                    int currentRecord = 0;
+
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (line.StartsWith("#")) continue;
+
+                        currentRecord++;
+
+                        if (currentRecord >= m && currentRecord <= n)
+                        {
+                            string[] values = line.Split(',');
+                            string currentFileType = values.Length > 6 ? values[6].Replace("\"", "").Trim() : "";
+
+                            if (!applyFilter || currentFileType.Equals(filterType, StringComparison.OrdinalIgnoreCase))
+                            {
+                                sb.AppendLine(line);
+                            }
+                        }
+
+                        if (currentRecord > n)
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                rtbShow.Text = sb.ToString();
+                MessageBox.Show($"Searching Line {m} to {n} Successful!", "Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Reason : " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_searchtxt_Click_1(object sender, EventArgs e)
+        {
+            LoadFilteredTextData();
         }
     }
 }

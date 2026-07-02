@@ -49,6 +49,13 @@
             this.tb_m = new System.Windows.Forms.TextBox();
             this.tb_n = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btn_searchtxt = new System.Windows.Forms.Button();
+            this.cb_FileTypetxt = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tb_mtxt = new System.Windows.Forms.TextBox();
+            this.tb_ntxt = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabcMain.SuspendLayout();
             this.tabpText.SuspendLayout();
             this.tabpCSV.SuspendLayout();
@@ -99,6 +106,13 @@
             // 
             // tabpText
             // 
+            this.tabpText.Controls.Add(this.btn_searchtxt);
+            this.tabpText.Controls.Add(this.cb_FileTypetxt);
+            this.tabpText.Controls.Add(this.label5);
+            this.tabpText.Controls.Add(this.label6);
+            this.tabpText.Controls.Add(this.tb_mtxt);
+            this.tabpText.Controls.Add(this.tb_ntxt);
+            this.tabpText.Controls.Add(this.label7);
             this.tabpText.Controls.Add(this.rtbShow);
             this.tabpText.Controls.Add(this.btRead);
             this.tabpText.Location = new System.Drawing.Point(4, 25);
@@ -184,7 +198,7 @@
             this.RegisterDate.HeaderText = "Date";
             this.RegisterDate.MinimumWidth = 8;
             this.RegisterDate.Name = "RegisterDate";
-            this.RegisterDate.Width = 61;
+            this.RegisterDate.Width = 65;
             // 
             // SHA256_Hash
             // 
@@ -266,6 +280,65 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "stopLine :";
             // 
+            // btn_searchtxt
+            // 
+            this.btn_searchtxt.Location = new System.Drawing.Point(684, 15);
+            this.btn_searchtxt.Name = "btn_searchtxt";
+            this.btn_searchtxt.Size = new System.Drawing.Size(66, 26);
+            this.btn_searchtxt.TabIndex = 27;
+            this.btn_searchtxt.Text = "Search";
+            this.btn_searchtxt.UseVisualStyleBackColor = true;
+            this.btn_searchtxt.Click += new System.EventHandler(this.btn_searchtxt_Click_1);
+            // 
+            // cb_FileTypetxt
+            // 
+            this.cb_FileTypetxt.FormattingEnabled = true;
+            this.cb_FileTypetxt.Location = new System.Drawing.Point(557, 17);
+            this.cb_FileTypetxt.Name = "cb_FileTypetxt";
+            this.cb_FileTypetxt.Size = new System.Drawing.Size(121, 24);
+            this.cb_FileTypetxt.TabIndex = 26;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(455, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(96, 16);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "File Extension :";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(144, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 16);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "StartLine :";
+            // 
+            // tb_mtxt
+            // 
+            this.tb_mtxt.Location = new System.Drawing.Point(215, 17);
+            this.tb_mtxt.Name = "tb_mtxt";
+            this.tb_mtxt.Size = new System.Drawing.Size(71, 22);
+            this.tb_mtxt.TabIndex = 22;
+            // 
+            // tb_ntxt
+            // 
+            this.tb_ntxt.Location = new System.Drawing.Point(362, 17);
+            this.tb_ntxt.Name = "tb_ntxt";
+            this.tb_ntxt.Size = new System.Drawing.Size(71, 22);
+            this.tb_ntxt.TabIndex = 24;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(292, 20);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 16);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "stopLine :";
+            // 
             // frmTextView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -279,6 +352,7 @@
             this.Text = "Text/CSV viewer";
             this.tabcMain.ResumeLayout(false);
             this.tabpText.ResumeLayout(false);
+            this.tabpText.PerformLayout();
             this.tabpCSV.ResumeLayout(false);
             this.tabpCSV.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
@@ -310,6 +384,13 @@
         private System.Windows.Forms.TextBox tb_m;
         private System.Windows.Forms.TextBox tb_n;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btn_searchtxt;
+        private System.Windows.Forms.ComboBox cb_FileTypetxt;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tb_mtxt;
+        private System.Windows.Forms.TextBox tb_ntxt;
+        private System.Windows.Forms.Label label7;
     }
 }
 
